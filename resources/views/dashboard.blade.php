@@ -24,7 +24,7 @@
                 <div class="my-2">
                     <p class="text-xl font-light">{{ $product->nama }}</p>
                     <p class="text-sm font-light">{{ $product->deskripsi }}</p>
-                    <p class="text-sm font-light">{{ $product->quantity }}</p>
+                    <p class="text-sm font-light">Stok {{ $product->quantity }}</p>
                     <p class="font-semibold text-gray-400">Rp. {{ number_format($product->harga,0,',','.') }}</p>
                 </div>
                 

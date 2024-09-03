@@ -29,8 +29,10 @@ class ProductController extends Controller
             'nama' => 'required',
             'harga' => 'required|numeric',
             'quantity' => 'required|numeric|min:0',
+            'deskripsi' => 'required',
             'foto' => 'required|image|mimes:jpeg,png,jpg'
         ]);
+
 
         $foto = $request->file('foto');
         $foto->storeAs('public', $foto->hashName());
@@ -41,9 +43,9 @@ class ProductController extends Controller
             'quantity' => $request->quantity,
             'deskripsi' => $request->deskripsi,
             'foto' => $foto->hashName()
-
+            
         ]);
-
+        
         return redirect()->route('dashboard')->with('success', 'Produk berhasil ditambahkan'); 
        
     }

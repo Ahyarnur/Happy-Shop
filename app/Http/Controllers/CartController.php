@@ -59,12 +59,9 @@ class CartController extends Controller
 
     public function removeFromCart($id)
     {
-        $cart = Session::get('cart');
+        $cart = Cart::find($id);
 
-        if (isset($cart[$id])) {
-            unset($cart[$id]);
-            Session::put('cart', $cart);
-        }
+        $cart->delete();
 
         return redirect()->back()->with('success', 'Produk berhasil dihapus dari keranjang!');
     }
