@@ -26,6 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::get('cart', [CartController::class, 'cart'])->name('cart');
     Route::get('remove-from-cart/{id}', [CartController::class, 'removeFromCart'])->name('remove.from.cart');
 
+    Route::post('/update-cart', [CartController::class, 'updateCart'])->name('update.cart');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

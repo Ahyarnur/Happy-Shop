@@ -68,4 +68,22 @@ class CartController extends Controller
 
         return redirect()->back()->with('success', 'Produk berhasil dihapus dari keranjang!');
     }
+
+    public function updateCart(Request $request)
+{
+    $cart = Cart::find($request->id);
+
+    if ($request->action == 'increase') {
+        $cart->quantity += 1;
+    } elseif ($request->action == 'decrease' && $cart->quantity > 1) {
+        $cart->quantity -= 1;
+    }
+
+    $cart->save();
+
+    return response()->json([
+        'quantity' => $cart->quantity,
+        'total' => $cart->product->harga * $cart->quantity,
+    ]);
+}
 }
