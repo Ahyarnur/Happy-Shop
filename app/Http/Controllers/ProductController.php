@@ -16,7 +16,7 @@ class ProductController extends Controller
     // }
     public function dashboard()
     {
-        $products = Product::latest()->paginate(6);
+        $products = Product::latest()->paginate(20);
 
         return view('dashboard', compact('products'));
     }

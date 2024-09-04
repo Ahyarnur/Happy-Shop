@@ -17,26 +17,26 @@
             </a>
         </div>
         
-        <div class="grid md:grid-cols-3 grid-cols-1 mt-4 gap-6">
+        <div class="grid md:grid-cols-4 grid-cols-1 mt-7 gap-10">
             @foreach ($products as $product)
             <div>
                 <img  src="{{ url('storage/' . $product->foto) }}" class="h-96 w-full" />
                 <div class="my-2">
                     <p class="text-xl font-light">{{ $product->nama }}</p>
-                    <p class="text-sm font-light">{{ $product->deskripsi }}</p>
+                    <p class="text-sm font-light truncate">{{ $product->deskripsi }}</p>
                     <p class="text-sm font-light">Stok {{ $product->quantity }}</p>
                     <p class="font-semibold text-gray-400">Rp. {{ number_format($product->harga,0,',','.') }}</p>
                 </div>
                 
-                <div class="flex items-center gap-20">
-                    <form action="{{ route('add.to.cart', $product->id) }}" method="post">
+                <div class="flex items-center gap-4">
+                    <form action="{{ route('add.to.cart', $product->id) }}" method="post" class="ml-auto">
                         @csrf
-                        <button type="submit" class="bg-gray-100 px-10 py-2 w-full rounded-md font-semibold flex justify-center">
-                            Masukan keranjang
-                            <x-heroicon-o-shopping-cart class="w-6 h-6 justify-end ml-2"/>
+                        <button type="submit" class="bg-slate-900 px-1 py-1 w-full text-sm rounded-lg font-semibold  items-center justify-center">
+                             
+                            <x-heroicon-o-shopping-cart class="w-6 h-6 text-white justify-end"/>
                         </button>
                     </form>
-                    <a href="/edit/{{$product->id}}"><button><x-feathericon-edit class="bg-gray-100 rounded-md font-semibold" /></button></a>
+                    <a href="/edit/{{$product->id}}"><button class="bg-slate-900 px-1 py-1 w-full text-sm rounded-lg font-semibold"><x-feathericon-edit class="w-6 h-6 justify-end text-white" /></button></a>
                 </div>
             </div>
 

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CheckoutController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,8 +26,12 @@ Route::middleware('auth')->group(function () {
     Route::post('add-to-cart/{id}', [CartController::class, 'addToCart'])->name('add.to.cart');
     Route::get('cart', [CartController::class, 'cart'])->name('cart');
     Route::get('remove-from-cart/{id}', [CartController::class, 'removeFromCart'])->name('remove.from.cart');
-
     Route::post('/update-cart', [CartController::class, 'updateCart'])->name('update.cart');
+
+    // web.php
+    Route::get('/checkout', [CheckoutController::class, 'showCheckout'])->name('checkout');
+    Route::post('/checkout', [CheckoutController::class, 'processCheckout'])->name('checkout.process');
+
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

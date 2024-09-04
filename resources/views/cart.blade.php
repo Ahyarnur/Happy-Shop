@@ -46,14 +46,14 @@
                                     <a href="{{ route('remove.from.cart', $details->id) }}" class="text-red-600 hover:text-red-800">
                                         Hapus
                                     </a>
-                                    <a href="" class="text-emerald-600 hover:text-emerald-800 border-spacing-7">
-                                       Checkout
-                                    </a>
                                 </td>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <a href="/checkout" class="inline-block bg-slate-900 text-white px-6 py-2 mt-5 rounded-lg absolute right-60 hover:bg-black">
+                        Lanjutkan ke Checkout
+                    </a>
             </div>
         @else
             <p class="text-gray-500">Keranjang belanja Anda kosong.</p>
