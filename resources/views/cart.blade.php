@@ -1,6 +1,11 @@
 
 <x-app-layout>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 px-2 mt-5 pb-52">
+
+        @if (session()->has('success'))
+        <x-alert message="{{session('success')}}"/>
+        @endif
+        
         <h2 class="text-3xl font-semibold mt-32 mb-10">Keranjang Belanja</h2>
         
         @php

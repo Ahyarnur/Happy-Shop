@@ -1,6 +1,10 @@
 <div class="bg-slate grid grid-cols-2 w-full max-h-screen">
     <div class="w-full max-h-screen">
-        <img src="toko.jpg" alt="jancuk" class="min-h-screen">
+        <div class="absolute z-50 top-56 left-10 flex-co ">
+            <h1 class="text-white text-5xl font-bold my-4 ">Nikmati belanja online <br>di Happy Shoping</h1>
+            <p class="text-white text-xl font-bold my-4 ">Cari keperluan anda <span id="typing"></span></p>
+        </div>
+        <img src="ya.jpg" alt="jancuk" class="min-h-screen filter brightness-50">
     </div>
     <div>
 <x-guest-layout>

@@ -20,7 +20,7 @@
         <div class="grid md:grid-cols-4 grid-cols-1 mt-7 gap-10">
             @foreach ($products as $product)
             <div>
-                <img  src="{{ url('storage/' . $product->foto) }}" class="h-96 w-full" />
+                <img  src="{{ url('storage/' . $product->foto) }}" class=" h-96 w-full" />
                 <div class="my-2">
                     <p class="text-xl font-light">{{ $product->nama }}</p>
                     <p class="text-sm font-light truncate">{{ $product->deskripsi }}</p>
@@ -31,12 +31,12 @@
                 <div class="flex items-center gap-4">
                     <form action="{{ route('add.to.cart', $product->id) }}" method="post" class="ml-auto">
                         @csrf
-                        <button type="submit" class="bg-slate-900 px-1 py-1 w-full text-sm rounded-lg font-semibold  items-center justify-center">
+                        <button type="submit" class="bg-gray-200 px-1 py-1 w-full text-sm rounded-lg font-semibold  items-center justify-center">
                              
-                            <x-heroicon-o-shopping-cart class="w-6 h-6 text-white justify-end"/>
+                            <x-heroicon-o-shopping-cart class="w-6 h-6 justify-end"/>
                         </button>
                     </form>
-                    <a href="/edit/{{$product->id}}"><button class="bg-slate-900 px-1 py-1 w-full text-sm rounded-lg font-semibold"><x-feathericon-edit class="w-6 h-6 justify-end text-white" /></button></a>
+                    <a href="/edit/{{$product->id}}"><button class="bg-gray-200 px-1 py-1 w-full text-sm rounded-lg font-semibold"><x-feathericon-edit class="w-6 h-6 justify-end" /></button></a>
                 </div>
             </div>
 
