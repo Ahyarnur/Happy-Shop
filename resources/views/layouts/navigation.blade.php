@@ -29,9 +29,15 @@
             <!-- Settings Dropdown -->
             <div class="flex items-center">
 
+                @php
+                    $cartcount = App\Models\Cart::where('user_id', Auth::id())->count();
+                @endphp
+
                 <div class="relative">
                     <a href="/cart"><x-heroicon-o-shopping-cart  class="w-7 h-7"/></a> 
-                    <span id="cart-notification" class="absolute top-0 right-0 px-1 py-[0.5] font-semibold text-white bg-red-600 text-xs rounded-full">{{ App\Models\Cart::where('user_id', Auth::id())->count() }}</span>
+                    @if ($cartcount >= 1)
+                    <span id="cart-notification" class="absolute top-0 right-0 px-1 py-[0.5] font-semibold text-white bg-red-600 text-xs rounded-full">{{ $cartcount }}</span>
+                    @endif
                 </div>
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
                     <x-dropdown align="right" width="48">

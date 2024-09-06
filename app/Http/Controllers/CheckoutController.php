@@ -42,15 +42,16 @@ class CheckoutController extends Controller
 
         
         foreach (Cart::where('user_id', auth()->id())->get() as $item) {
-            $order->items()->create([
-                'product_id' => $item->product_id,
-                'quantity' => $item->quantity,
-                'price' => $item->product->harga,
-            ]);
+            // $order->items()->create([
+            //     'product_id' => $item->product_id,
+            //     'quantity' => $item->quantity,
+            //     'price' => $item->product->harga,
+            // ]);
+            
             $item->delete();
         }
 
-        return redirect()->route('order.success')->with('status', 'Order berhasil diproses!');
+        return redirect()->route('dashboard')->with('success','Order berhasil diproses! Silahkan hubungi nomer di samping')->with('link','http://wa.me/6281390796503');
     }
 
 
