@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\User;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
@@ -51,7 +53,10 @@ class CheckoutController extends Controller
             $item->delete();
         }
 
-        return redirect()->route('dashboard')->with('success','Order berhasil diproses! Silahkan hubungi nomer di samping')->with('link','http://wa.me/6281390796503');
+        if(User::find(Auth::id())->usertype === "user") {
+            return redirect()->route('dashboarduser')->with('success','Order berhasil diproses! Silahkan hubungi nomer di samping untuk info lebih lanjut')->with('link','http://wa.me/6281390796503');    
+        }
+        return redirect()->route('dashboard')->with('success','Order berhasil diproses! Silahkan hubungi nomer di samping untuk info lebih lanjut')->with('link','http://wa.me/6281390796503');
     }
 
 

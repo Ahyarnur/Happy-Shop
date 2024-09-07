@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Storage;
+use function PHPUnit\Framework\returnValueMap;
 
 class ProductController extends Controller
 {
-    // public function index()
-    // {
-    //     $products = Product::paginate(12);
-
-    //     return view('products.index', compact('products'));
-    // }
+    
     public function dashboard()
     {
+
+        if(User::find(Auth::id())->usertype === 'user') return redirect('/dashboarduser');
+
         $products = Product::latest()->paginate(20);
 
         return view('dashboard', compact('products'));
@@ -76,6 +78,11 @@ class ProductController extends Controller
         $product->save();
         return redirect()->route('dashboard')->with('success', 'Update Product Berhasil');
 
+    }
+
+    public function detail($id){
+        $detail = Product::find($id);
+        return view('detail',compact('detail'));
     }
 
 }
