@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Monitor;
 use App\Models\User;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -51,6 +52,11 @@ class CheckoutController extends Controller
             // ]);
             
             $item->delete();
+
+            Monitor::create([
+                'cart_id' => $item->id,
+                'is_done' => false
+            ]);
         }
 
         if(User::find(Auth::id())->usertype === "user") {

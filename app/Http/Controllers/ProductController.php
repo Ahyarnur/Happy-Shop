@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Monitor;
 use App\Models\User;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -12,6 +13,10 @@ use function PHPUnit\Framework\returnValueMap;
 
 class ProductController extends Controller
 {
+    public function monitor(){
+        $data=Monitor::all();
+        return view('monitor',compact('data'));
+    }
     
     public function dashboard()
     {

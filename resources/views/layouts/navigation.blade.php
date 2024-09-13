@@ -10,20 +10,29 @@
                         <img src="{{ url('logo.png') }}" class="h-8" />
                         
                     </a>
+                    
                 </div>
-
+                    
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                </div>
+                    {{-- admin link --}}
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
-                        {{ __('Products') }}
+                    @if (App\Models\User::find(Auth::id())->usertype === 'admin')
+                    
+                    <x-nav-link :href="route('monitor')" >
+                        {{ __('Monitor') }}
                     </x-nav-link>
+
+                    @endif
+                   
+
+                   
+                   
+                    
+                    
                 </div>
+
+               
             </div>
 
             <!-- Settings Dropdown -->

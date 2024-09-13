@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::get('products', [ProductController::class, 'index'])->name('products.index');
     Route::get('edit/{id}', [ProductController::class, 'edit'])->name('edit');
     Route::get('dashboard', [ProductController::class, 'dashboard'])->name('dashboard');
+    Route::get('monitor', [ProductController::class, 'monitor'])->name('monitor');
     Route::get('create', [ProductController::class, 'create'])->name('create');
     Route::post('createpost', [ProductController::class, 'createpost'])->name('createpost');
     Route::put('update/{id}', [ProductController::class, 'update'])->name('update');
