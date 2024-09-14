@@ -39,7 +39,7 @@
             <div class="flex items-center">
 
                 @php
-                    $cartcount = App\Models\Cart::where('user_id', Auth::id())->count();
+                    $cartcount = App\Models\Cart::where('user_id', Auth::id())->where('is_checkout', false)->count();
                 @endphp
 
                 <div class="relative">

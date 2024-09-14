@@ -9,7 +9,7 @@
         <h2 class="text-3xl font-semibold mt-32 mb-10">Keranjang Belanja</h2>
         
         @php
-            $data = App\Models\Cart::where('user_id', Auth::id())->get();
+            $data = App\Models\Cart::where('user_id', Auth::id())->where('is_checkout', false)->get();
         @endphp
         
         @if($data->count())

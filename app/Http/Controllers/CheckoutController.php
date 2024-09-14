@@ -51,12 +51,12 @@ class CheckoutController extends Controller
             //     'price' => $item->product->harga,
             // ]);
             
-            
+            $item->is_checkout = true;
+            $item->save();
             Monitor::create([
                 'cart_id' => $item->id,
                 'is_done' => false
             ]);
-            $item->delete();
         }
 
         if(User::find(Auth::id())->usertype === "user") {
