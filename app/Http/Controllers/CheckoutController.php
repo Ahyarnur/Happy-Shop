@@ -13,7 +13,7 @@ class CheckoutController extends Controller
 {
     public function showCheckout()
     {
-        $cartItems = Cart::where('user_id', auth()->id())->get();
+        $cartItems = Cart::where('user_id', auth()->id())->where('is_checkout', false)->get();
         $total = $cartItems->sum(function ($item) {
             return $item->product->harga * $item->quantity;
         });
@@ -44,7 +44,7 @@ class CheckoutController extends Controller
         $order->save();
 
         
-        foreach (Cart::where('user_id', auth()->id())->get() as $item) {
+        foreach (Cart::where('user_id', auth()->id())->where('is_checkout', false)->get() as $item) {
             // $order->items()->create([
             //     'product_id' => $item->product_id,
             //     'quantity' => $item->quantity,
@@ -58,6 +58,7 @@ class CheckoutController extends Controller
                 'is_done' => false
             ]);
         }
+        
 
         if(User::find(Auth::id())->usertype === "user") {
             return redirect()->route('dashboarduser')->with('success','Order berhasil diproses! Silahkan hubungi nomer di samping untuk info lebih lanjut')->with('link','http://wa.me/6281390796503');    
@@ -65,6 +66,14 @@ class CheckoutController extends Controller
         return redirect()->route('dashboard')->with('success','Order berhasil diproses! Silahkan hubungi nomer di samping untuk info lebih lanjut')->with('link','http://wa.me/6281390796503');
     }
 
+    public function removeFromMonitor($id)
+    {
+        $cart = Monitor::find($id);
+
+        $cart->delete();
+
+        return redirect()->back()->with('success', 'Produk berhasil dihapus dari keranjang!');
+    }
 
     
 }

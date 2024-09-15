@@ -14,7 +14,7 @@ use function PHPUnit\Framework\returnValueMap;
 class ProductController extends Controller
 {
     public function monitor(){
-        $data=Monitor::all();
+        $data = Monitor::where('is_done', false)->with('cart.product')->get();
         return view('monitor',compact('data'));
     }
     
