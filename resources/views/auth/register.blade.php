@@ -59,3 +59,10 @@
         </div>
     </form>
 </x-guest-layout>
+<script>
+    var typed = new Typed('#typing', {
+    strings: ['Pakaian', 'Kosmetik' ,'Elektronik' ,'Furniture'],
+    typeSpeed: 47,
+    loop: true,
+});
+</script>

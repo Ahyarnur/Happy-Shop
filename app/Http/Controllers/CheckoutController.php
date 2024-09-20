@@ -64,7 +64,7 @@ class CheckoutController extends Controller
         if(User::find(Auth::id())->usertype === "user") {
             return redirect()->route('dashboarduser')->with('success','Order berhasil diproses! Silahkan hubungi nomer di samping untuk info lebih lanjut')->with('link','http://wa.me/6281390796503');    
         }
-        return redirect()->route('dashboard')->with('success','Order berhasil diproses! Silahkan hubungi nomer di samping untuk info lebih lanjut');
+        return redirect()->route('dashboard')->with('success','Order berhasil diproses!');
     }
 
     public function removeFromMonitor($id)
