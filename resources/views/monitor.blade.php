@@ -74,16 +74,16 @@
                         @foreach($data as $details)
                             <tr id="cart-item-{{ $details->id }}">
                                 <!-- Nama Pemesan -->
-                                <td class="px-4 py-2 border-b border-gray-200">{{ $details->cart->user->name }}</td>
+                                <td class="px-4 py-2 border-b border-gray-200">{{ $details->order->name }}</td>
 
                                 <!-- Email -->
-                                <td class="px-4 py-2 border-b border-gray-200">{{ $details->cart->user->email }}</td>
+                                <td class="px-4 py-2 border-b border-gray-200">{{ $details->order->email }}</td>
 
                                 <!-- Phone -->
-                                <td class="px-4 py-2 border-b border-gray-200">{{ $details->cart->user->phone }}</td>
+                                <td class="px-4 py-2 border-b border-gray-200">{{ $details->order->phone }}</td>
 
                                 <!-- Alamat -->
-                                <td class="px-4 py-2 border-b border-gray-200">{{ $details->cart->user->address }}</td>
+                                <td class="px-4 py-2 border-b border-gray-200">{{ $details->order->address }}</td>
 
                                 <!-- Foto Produk -->
                                 <td class="px-4 py-2 border-b border-gray-200">

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('monitors', function (Blueprint $table) {
             $table->id();
             $table->foreignId('cart_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('order_id')->constrained()->cascadeOnDelete();
             $table->boolean('is_done');
             $table->timestamps();
         });
