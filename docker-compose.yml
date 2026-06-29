@@ -1,0 +1,12 @@
+services:
+  happy-shop:
+    build: .
+    container_name: happy-shop
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    volumes:
+      - ./storage:/var/www/html/storage
+    environment:
+      APP_URL: "https://app.ahyarni.my.id"
+      ASSET_URL: "https://app.ahyarni.my.id"
